@@ -15,7 +15,7 @@ function Restaurants(props) {
     <div>
       <RestaurantsNavigation
         restaurants={props.restaurants}
-        onRestaurantChange={id => setActiveRestaurant(id)}
+        onRestaurantChange={setActiveRestaurant}
       />
       <Menu restaurant={activeRestaurant} />
     </div>
