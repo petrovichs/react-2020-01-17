@@ -1,22 +1,28 @@
 import React from 'react'
-import Restaurant from './restaurant'
 import {Rate} from 'antd'
 
 function RestaurantsNavigation(props) {
-  return (
-    <div>
-      {props.restaurants.map(restaurant => (
-        <div key={restaurant.id}>
-          <Restaurant
-            restaurant={restaurant}
-            onRestaurantChange={props.onRestaurantChange}
-          />
-          {/*<Rate disabled value={restaurant.reviews.reduce((a,b) => a+b, 0)/restaurant.reviews.length}/>*/}
-          {/*<Rate disabled value={restaurant.reviews.reduce((a,b) => a + b, 0).toString()} />*/}
+
+    function getRateValue(review){
+        return review.map(e => e.rating).reduce((a,b)=>a+b)/review.length;
+    }
+
+    return (
+        <div style={{paddingLeft: 10}}>
+            {props.restaurants.map(restaurant => (
+                <div key={restaurant.id}>
+                    <a
+                       onClick={() => {
+                           props.onRestaurantChange(restaurant.id)
+                       }}
+                    >
+                        {restaurant.name}
+                    </a> &nbsp;
+                    <Rate allowHalf disabled value={getRateValue(restaurant.reviews)}/>
+                </div>
+            ))}
         </div>
-      ))}
-    </div>
-  )
+    )
 }
 
 export default RestaurantsNavigation

@@ -9,7 +9,7 @@ function Dish(props) {
 
     return (
         <div style={divStyle}>
-            <Card title={props.dish.name} extra={<b>${props.dish.price}</b>}>
+            <Card title={props.dish.name} extra={<h3><b>${props.dish.price}</b></h3>} style={{ width: 300 }} size="small">
                 {props.dish.ingredients.map((ing) => (
                     <p>{ing}</p>
                 ))}

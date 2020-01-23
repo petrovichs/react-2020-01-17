@@ -1,15 +1,12 @@
 import React from 'react'
+import Menu from "./menu";
+import Review from "./review";
 
 function Restaurant(props) {
   return (
     <div>
-      <a key={props.restaurant.id}
-        onClick={() => {
-          props.onRestaurantChange(props.restaurant.id)
-        }}
-      >
-        {props.restaurant.name}
-      </a>
+        <Menu restaurant={props.restaurant} />
+        <Review restaurant={props.restaurant} />
     </div>
   )
 }
