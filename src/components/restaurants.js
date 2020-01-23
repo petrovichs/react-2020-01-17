@@ -2,6 +2,7 @@ import React, {useMemo, useState} from 'react'
 import RestaurantsNavigation from './restaurants-navigation'
 import Menu from './menu'
 import Review from './review'
+import { Row, Col } from 'antd';
 
 function Restaurants(props) {
   const [activeRestaurantId, setActiveRestaurant] = useState(
@@ -14,12 +15,23 @@ function Restaurants(props) {
   }, [activeRestaurantId, props.restaurants])
   return (
     <div>
-      <RestaurantsNavigation
-        restaurants={props.restaurants}
-        onRestaurantChange={setActiveRestaurant}
-      />
-      <Menu restaurant={activeRestaurant} />
-      <Review restaurant={activeRestaurant} />
+
+        <Row>
+            <Col span={6}>
+                <RestaurantsNavigation
+                    restaurants={props.restaurants}
+                    onRestaurantChange={setActiveRestaurant}
+                />
+            </Col>
+            <Col span={18}>
+                <Menu restaurant={activeRestaurant} />
+            </Col>
+        </Row>
+        <Row>
+            <Col span={24}>
+                <Review restaurant={activeRestaurant} />
+            </Col>
+        </Row>
     </div>
   )
 }

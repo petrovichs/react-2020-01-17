@@ -3,8 +3,7 @@ import React from 'react'
 function Restaurant(props) {
   return (
     <div>
-      <a
-        key={props.restaurant.id}
+      <a key={props.restaurant.id}
         onClick={() => {
           props.onRestaurantChange(props.restaurant.id)
         }}
