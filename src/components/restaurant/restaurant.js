@@ -21,7 +21,7 @@ class Restaurant extends Component {
       restaurant: {name, menu, reviews},
     } = this.props
     return (
-      <div>
+      <div data-automation-id="RESTAURANT_CONTAINER">
         <Hero heading={name}>
           <AverageRating reviews={reviews} />
         </Hero>

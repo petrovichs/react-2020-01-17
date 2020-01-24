@@ -20,4 +20,8 @@ class Dishes extends Component {
   }
 }
 
+Dishes.defaultProps = {
+  menu: [],
+}
+
 export default Dishes

@@ -8,6 +8,7 @@ class RestaurantsNavigation extends Component {
       <div className={styles.list}>
         {restaurants.map(({id, name}) => (
           <span
+            data-automation-id="RESTAURANT_NAVIGATION"
             className={styles.restaurant}
             key={id}
             onClick={() => onRestaurantChange(id)}

@@ -8,6 +8,26 @@ const restaurants = [
     },
     image:
       'https://scontent-waw1-1.xx.fbcdn.net/v/t1.0-9/12065623_177150569292352_3493242754411252126_n.jpg?_nc_cat=108&_nc_ht=scontent-waw1-1.xx&oh=94f9c77559a2f31edf4fd68a89b6dda7&oe=5D6D6D4A',
+    menu: [
+      {
+        id: 'd75f762a-eadd-49be-8918-ed0daa8dd024',
+        name: 'Chicken tikka masala',
+        price: 12,
+        ingredients: ['chicken', 'rice'],
+      },
+      {
+        id: 'c3cb8f92-a2ed-4716-92a1-b6ea813e9049',
+        name: 'Naan',
+        price: 3,
+        ingredients: ['bread'],
+      },
+      {
+        id: 'bd129641-c0eb-432b-84b6-8b81d2930358',
+        name: 'Samosa',
+        price: 8,
+        ingredients: ['chicken', 'bread'],
+      },
+    ],
     reviews: [
       {
         id: '5909796d-5030-4e36-adec-68b8f9ec2d96',
