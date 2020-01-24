@@ -1,7 +1,7 @@
 import {useState, useCallback} from 'react'
 
-export const useAmount = (initialValue = 0) => {
-  const [amount, setAmount] = useState(initialValue)
+export function useAmount(initialState = 0) {
+  const [amount, setAmount] = useState(initialState)
   const increase = useCallback(() => {
     setAmount(amount + 1)
   }, [amount])
@@ -11,7 +11,7 @@ export const useAmount = (initialValue = 0) => {
 
   return {
     amount,
-    decrease,
     increase,
+    decrease,
   }
 }

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useCallback, useState} from 'react'
 import Restaurant from '../restaurant'
 import RestaurantsNavigation from '../restaurants-navigation'
 
@@ -7,11 +7,14 @@ function Restaurants(props) {
   const restaurant = props.restaurants.find(
     restaurant => restaurant.id === currentId
   )
+  const handleRestaurantChange = useCallback(id => setCurrentId(id), [
+    setCurrentId,
+  ])
   return (
     <div>
       <RestaurantsNavigation
         restaurants={props.restaurants}
-        onRestaurantChange={setCurrentId}
+        onRestaurantChange={handleRestaurantChange}
       />
       <Restaurant restaurant={restaurant} />
     </div>

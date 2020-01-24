@@ -1,20 +1,23 @@
-import React from 'react'
+import React, {Component} from 'react'
+import styles from './restaurants-navigation.module.css'
 
-function RestaurantsNavigation(props) {
-  return (
-    <div>
-      {props.restaurants.map(restaurant => (
-        <button
-          key={restaurant.id}
-          onClick={() => {
-            props.onRestaurantChange(restaurant.id)
-          }}
-        >
-          {restaurant.name}
-        </button>
-      ))}
-    </div>
-  )
+class RestaurantsNavigation extends Component {
+  render() {
+    const {restaurants, onRestaurantChange} = this.props
+    return (
+      <div className={styles.list}>
+        {restaurants.map(({id, name}) => (
+          <span
+            className={styles.restaurant}
+            key={id}
+            onClick={() => onRestaurantChange(id)}
+          >
+            {name}
+          </span>
+        ))}
+      </div>
+    )
+  }
 }
 
 export default RestaurantsNavigation
