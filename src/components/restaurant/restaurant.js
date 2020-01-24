@@ -6,6 +6,16 @@ import Hero from '../hero'
 import styles from './restaurant.module.css'
 
 class Restaurant extends Component {
+  state = {
+    error: null,
+  }
+
+  componentDidCatch(error, errorInfo) {
+    this.setState({
+      error,
+    })
+  }
+
   render() {
     const {
       restaurant: {name, menu, reviews},
@@ -17,7 +27,7 @@ class Restaurant extends Component {
         </Hero>
         <div className={styles.restaurantContent}>
           <Reviews reviews={reviews} />
-          <Dishes menu={menu} />
+          {!this.state.error && <Dishes menu={menu} />}
         </div>
       </div>
     )
