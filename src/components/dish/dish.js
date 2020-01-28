@@ -1,9 +1,9 @@
-import React, {useCallback} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import {Card, Typography, Button, Row, Col} from 'antd'
 import styles from './dish.module.css'
 import counter from '../../decorators/counter'
-import {useDispatch, useSelector} from 'react-redux'
+import {connect} from 'react-redux'
 import {addToCart} from '../../store/action-creators'
 
 function Dish(props) {
@@ -11,17 +11,10 @@ function Dish(props) {
     dish,
 
     // from decorator
+    amount,
+    increase,
     decrease,
   } = props
-
-  const dispatch = useDispatch()
-
-  const increase = useCallback(() => dispatch(addToCart(dish.id)), [
-    dispatch,
-    dish.id,
-  ])
-
-  const amount = useSelector(state => state.cart[dish.id] || 0)
 
   return (
     <Card className={styles.productDetailedOrderCard}>
@@ -54,7 +47,7 @@ function Dish(props) {
               <Button
                 className={styles.button}
                 icon="plus"
-                onClick={increase}
+                onClick={() => increase(dish.id)}
                 data-automation-id="INCREASE"
               />
             </Button.Group>
@@ -76,4 +69,14 @@ export const DishProps = {
 
 Dish.propTypes = DishProps
 
-export default counter(Dish)
+const mapStateToProps = (state, ownProps) => {
+  return {
+    amount: state.cart[ownProps.dish.id] || 0,
+  }
+}
+
+const mapDispatchToProps = dispatch => ({
+  increase: id => dispatch(addToCart(id)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dish)
