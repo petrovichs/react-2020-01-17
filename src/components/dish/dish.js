@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Card, Typography, Button, Row, Col} from 'antd'
 import styles from './dish.module.css'
-import counter from '../../decorators/counter'
 import {connect} from 'react-redux'
 import {addToCart} from '../../store/action-creators'
 
@@ -10,7 +9,7 @@ function Dish(props) {
   const {
     dish,
 
-    // from decorator
+    // from store
     amount,
     increase,
     decrease,
