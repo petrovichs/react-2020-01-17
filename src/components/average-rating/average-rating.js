@@ -1,7 +1,6 @@
 import React, {useMemo} from 'react'
 import PropTypes from 'prop-types'
 import {Rate} from 'antd'
-import Reviews from '../reviews'
 
 function AverageRating({reviews}) {
   const rawRating = useMemo(
@@ -17,7 +16,7 @@ function AverageRating({reviews}) {
   )
 }
 
-Reviews.propTypes = {
+AverageRating.propTypes = {
   reviews: PropTypes.arrayOf(
     PropTypes.shape({
       rating: PropTypes.number,

@@ -20,7 +20,7 @@ describe('Dish', function() {
   })
 
   it('should decrease cart amount when click on minus button not lower than 0', function() {
-    const wrapper = mount(<Dish dish={dishMock} />)
+    const wrapper = mount(<Dish initialValue={3} dish={dishMock} />)
 
     wrapper
       .find('button[data-automation-id="INCREASE"]')
