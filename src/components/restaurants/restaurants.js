@@ -1,5 +1,6 @@
 import React, {useCallback, useMemo, useState} from 'react'
-import Restaurant from '../restaurant'
+import PropTypes from 'prop-types'
+import Restaurant, {RestaurantProps} from '../restaurant'
 import RestaurantsNavigation from '../restaurants-navigation'
 
 function Restaurants(props) {
@@ -21,6 +22,10 @@ function Restaurants(props) {
       <Restaurant restaurant={restaurant} />
     </div>
   )
+}
+
+Restaurants.propTypes = {
+  restaurants: PropTypes.arrayOf(PropTypes.shape(RestaurantProps.restaurant)),
 }
 
 export default Restaurants
