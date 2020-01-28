@@ -1,18 +1,27 @@
-import React from 'react'
+import React, {useCallback} from 'react'
 import PropTypes from 'prop-types'
 import {Card, Typography, Button, Row, Col} from 'antd'
 import styles from './dish.module.css'
 import counter from '../../decorators/counter'
+import {useDispatch, useSelector} from 'react-redux'
+import {addToCart} from '../../store/action-creators'
 
 function Dish(props) {
   const {
     dish,
 
     // from decorator
-    amount,
-    increase,
     decrease,
   } = props
+
+  const dispatch = useDispatch()
+
+  const increase = useCallback(() => dispatch(addToCart(dish.id)), [
+    dispatch,
+    dish.id,
+  ])
+
+  const amount = useSelector(state => state.cart[dish.id] || 0)
 
   return (
     <Card className={styles.productDetailedOrderCard}>
@@ -45,7 +54,7 @@ function Dish(props) {
               <Button
                 className={styles.button}
                 icon="plus"
-                onClick={() => increase(dish.id)}
+                onClick={increase}
                 data-automation-id="INCREASE"
               />
             </Button.Group>
