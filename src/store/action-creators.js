@@ -5,4 +5,13 @@ export const addToCart = id => {
       id,
     },
   }
-}
+};
+
+export const removeToCart = id => {
+  return {
+    type: 'REMOVE_TO_CART',
+    payload: {
+      id,
+    },
+  }
+};
